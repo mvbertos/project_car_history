@@ -26,7 +26,11 @@ const contentEl = document.getElementById("content");
 
 const vDisplayEl = document.createElement("div");
 vDisplayEl.id = "vDisplay";
-vDisplayEl.appendChild(getRendererElement());
+
+const vCanvasDisplayEl = getRendererElement();
+vCanvasDisplayEl.id = "canvasDisplay";
+vDisplayEl.appendChild(vCanvasDisplayEl);
+
 contentEl.appendChild(vDisplayEl);
 
 const vInfoEl = document.createElement("div");

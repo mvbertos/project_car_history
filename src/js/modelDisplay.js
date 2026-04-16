@@ -33,7 +33,7 @@ ambientLight.intensity = 1000;
 scene.add(ambientLight);
 
 const directionalLight = new THREE.DirectionalLight(0xffffff);
-directionalLight.position.set(0,10,0);
+directionalLight.position.set(0, 10, 0);
 scene.add(directionalLight);
 
 const dLightHelper = new THREE.DirectionalLightHelper(directionalLight, 5);
@@ -62,6 +62,27 @@ loader.load(
 function animationLoop() {
   renderer.render(scene, camera);
 }
+
+//Update the windowsize for the renderer
+// const container = renderer.domElement;
+
+// function onResize() {
+//   const width = container.clientWidth;
+//   const height = container.clientHeight;
+
+//   camera.aspect = width / height;
+//   camera.updateProjectionMatrix();
+
+//   renderer.setSize(width, height);
+
+//   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+// }
+
+// window.addEventListener("resize", () => {
+//   onResize();
+// });
+
+// onResize();
 
 renderer.setAnimationLoop(animationLoop);
 

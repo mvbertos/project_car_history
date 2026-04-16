@@ -39,6 +39,7 @@ header {
   margin: var(--default-margin);
   background-color: gray;
 }
+
 #content > div#vDescription {
   padding: var(--default-padding);
   display: grid;
