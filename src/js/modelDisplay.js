@@ -8,10 +8,10 @@ const renderer = new THREE.WebGLRenderer();
 
 //Scene
 const scene = new THREE.Scene();
-scene.background = new THREE.Color(0xffffff);
+scene.background = new THREE.Color(0xeeeeee);
 
-const axelhelper = new THREE.AxesHelper(5);
-scene.add(axelhelper);
+// const axelhelper = new THREE.AxesHelper(5);
+// scene.add(axelhelper);
 
 //Camera
 const camera = new THREE.PerspectiveCamera(
@@ -21,9 +21,11 @@ const camera = new THREE.PerspectiveCamera(
   1000,
 );
 
-camera.position.set(-10, 30, 30);
+camera.position.set(5, 10, 16);
 
 const orbit = new OrbitControls(camera, renderer.domElement);
+orbit.enableZoom = false;
+orbit.enablePan = false;
 orbit.update();
 
 //Light
@@ -36,8 +38,8 @@ const directionalLight = new THREE.DirectionalLight(0xffffff);
 directionalLight.position.set(0, 10, 0);
 scene.add(directionalLight);
 
-const dLightHelper = new THREE.DirectionalLightHelper(directionalLight, 5);
-scene.add(dLightHelper);
+// const dLightHelper = new THREE.DirectionalLightHelper(directionalLight, 5);
+// scene.add(dLightHelper);
 
 //Load Model
 const modelRef = new URL(

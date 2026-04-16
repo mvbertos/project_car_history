@@ -1,6 +1,62 @@
+import { div } from "three/tsl";
 import "../css/meyerReset.css";
 import "../css/style.css";
 import { getRendererElement } from "./modelDisplay";
+
+class CarData {
+  constructor(name = "", description = "", details = {}) {
+    this.name = name;
+    this.description = description;
+    this.details = details;
+  }
+}
+const fairladyZ89 = new CarData(
+  "Fairlady Z 300ZX 98'",
+  "Since the launch of the first-generation S30 (1969), the Fairlady Z became an exceptional hit as a sports car with a production total in excess of 1 million units. Special features of the fourth-generation model (Z32), launched in July 1989, included its spirited silhouette - wide proportions, slanted nose, and forward cabin. Both two-seater and 2/2 series were produced. ",
+  [
+    {
+      field: "Overall (length / width / height)",
+      value: "4,525/1,800/1,255mm",
+    },
+    {
+      field: "Wheelbase",
+      value: "2,570mm",
+    },
+    { field: "Tread (front/rear)", value: "1,495/1,535mm" },
+    {
+      field: "Curb weight",
+      value: "1,570kg",
+    },
+    {
+      field: "Engine",
+      value: "VG30DET (V6, DOHC), 2,960cc",
+    },
+    {
+      field: "Engine Max. power",
+      value: "206W (280PS)/6,400rpm",
+    },
+    {
+      field: "Engine Max. torque",
+      value: "388Nm (39.6kgm)/3,600rpm",
+    },
+    {
+      field: "Transmission",
+      value: "Electronically controlled AT (E-AT)",
+    },
+    {
+      field: "Suspension",
+      value: "Multilink (front & rear) ",
+    },
+    {
+      field: "Brakes",
+      value: "Ventilated disc (front & rear)",
+    },
+    {
+      field: "Tires",
+      value: "225/50R16 (front & rear) ",
+    },
+  ],
+);
 
 const dataTable = (() => {
   const createItem = (name, value) => {
@@ -20,36 +76,40 @@ const dataTable = (() => {
   return { createItem };
 })();
 
-const loreIpsum =
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 const contentEl = document.getElementById("content");
 
+//Displaying Vehicle Model
 const vDisplayEl = document.createElement("div");
 vDisplayEl.id = "vDisplay";
+
 const vCanvasDisplayEl = getRendererElement();
-vCanvasDisplayEl.id = "canvasDisplay";
 vDisplayEl.appendChild(vCanvasDisplayEl);
 
 contentEl.appendChild(vDisplayEl);
 
+//Informations of the current vehicle
 const vInfoEl = document.createElement("div");
-vInfoEl.id = "vDescription";
+vInfoEl.id = "vInfo";
 
 const vNameEl = document.createElement("h1");
-vNameEl.textContent = "Vehicle Name";
+vNameEl.textContent = fairladyZ89.name;
 
 const vDescriptionEl = document.createElement("p");
-vDescriptionEl.textContent = loreIpsum;
+vDescriptionEl.textContent = fairladyZ89.description;
 
 const vDataEl = document.createElement("div");
 vDataEl.id = "dataTable";
 vDataEl.append(
-  dataTable.createItem("data1", "here is the value"),
-  dataTable.createItem("data2", "here is the value"),
-  dataTable.createItem("data3", "here is the value"),
-  dataTable.createItem("data4", "here is the value"),
-  dataTable.createItem("data5", "here is the value"),
+  ...fairladyZ89.details.map((v) => {
+    return dataTable.createItem(v.field, v.value);
+  }),
 );
+
 vInfoEl.append(vNameEl, vDescriptionEl, vDataEl);
+
+//Just simple visual division between elements
+// const divisionElement = document.createElement("div");
+// divisionElement.id = "division";
+// contentEl.appendChild(divisionElement);
 
 contentEl.appendChild(vInfoEl);
