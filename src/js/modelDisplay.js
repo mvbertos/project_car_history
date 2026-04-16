@@ -13,12 +13,16 @@ const camera = new THREE.PerspectiveCamera(
 camera.position.set(-10, 30, 30);
 
 const orbit = new OrbitControls(camera, renderer.domElement);
+orbit.update();
 
 const axelhelper = new THREE.AxesHelper(5);
 scene.add(axelhelper);
 
-renderer.render(scene, camera);
-orbit.update();
+function animationLoop() {
+  renderer.render(scene, camera);
+}
+
+renderer.setAnimationLoop(animationLoop);
 
 function getRendererElement() {
   return renderer.domElement;
