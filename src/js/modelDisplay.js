@@ -4,7 +4,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
 //Renderer
 const renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth, window.innerHeight);
+// renderer.setSize(window.innerWidth, window.innerHeight);
 
 //Scene
 const scene = new THREE.Scene();
@@ -50,7 +50,7 @@ loader.load(
   (gltf) => {
     const model = gltf.scene;
     scene.add(model);
-    model.position(0, 0, 0);
+    model.position.set(0, 0, 0);
     console.log("Model Loaded!");
   },
   (e) => {
@@ -63,30 +63,38 @@ function animationLoop() {
   renderer.render(scene, camera);
 }
 
-//Update the windowsize for the renderer
-// const container = renderer.domElement;
+// Update the windowsize for the renderer
 
-// function onResize() {
-//   const width = container.clientWidth;
-//   const height = container.clientHeight;
+function onResize() {
+  const container = renderer.domElement.parentElement;
+  if (container == null) {
+    console.log("null");
 
-//   camera.aspect = width / height;
-//   camera.updateProjectionMatrix();
+    return;
+  }
+  console.log("not null");
 
-//   renderer.setSize(width, height);
+  const width = container.clientWidth;
+  const height = container.clientHeight;
 
-//   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-// }
+  camera.aspect = width / height;
+  camera.updateProjectionMatrix();
 
-// window.addEventListener("resize", () => {
-//   onResize();
-// });
+  renderer.setSize(width, height);
 
-// onResize();
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+}
+
+window.addEventListener("resize", () => {
+  onResize();
+});
+
+onResize();
 
 renderer.setAnimationLoop(animationLoop);
 
 function getRendererElement() {
   return renderer.domElement;
 }
+
 export { getRendererElement };
