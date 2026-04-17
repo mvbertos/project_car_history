@@ -15,7 +15,7 @@ const fairladyZ89 = new CarData(
   "Since the launch of the first-generation S30 (1969), the Fairlady Z became an exceptional hit as a sports car with a production total in excess of 1 million units. Special features of the fourth-generation model (Z32), launched in July 1989, included its spirited silhouette - wide proportions, slanted nose, and forward cabin. Both two-seater and 2/2 series were produced. ",
   [
     {
-      field: "Overall (length / width / height)",
+      field: "(length / width / height)",
       value: "4,525/1,800/1,255mm",
     },
     {

@@ -1,7 +1,7 @@
 :root {
   --default-padding: 16px;
   --default-margin: 16px;
-  --default-gap: 16px;
+  --default-gap: 32px;
 }
 
 h1 {
@@ -11,7 +11,11 @@ h1 {
 
 h3 {
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 1.25rem;
+}
+
+p{
+  font-size: 1.25rem;
 }
 
 body {
@@ -58,12 +62,13 @@ header {
 div#dataTable {
   display: grid;
   grid-template-rows: repeat(auto, auto);
-  gap: 5px;
+  gap: 16px;
 }
 
 div#tableItem {
   display: grid;
-  grid-template-columns: repeat(2, 30ch);
+  border-bottom: black solid 1px;
+  grid-template-columns: repeat(2, 40ch);
 }
 
 footer {
