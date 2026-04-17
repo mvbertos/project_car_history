@@ -67,14 +67,11 @@ function animationLoop() {
 
 // Update the windowsize for the renderer
 
-function onResize() {
+function resizeRendererView() {
   const container = renderer.domElement.parentElement;
   if (container == null) {
-    console.log("null");
-
     return;
   }
-  console.log("not null");
 
   const width = container.clientWidth;
   const height = container.clientHeight;
@@ -88,10 +85,8 @@ function onResize() {
 }
 
 window.addEventListener("resize", () => {
-  onResize();
+  resizeRendererView();
 });
-
-onResize();
 
 renderer.setAnimationLoop(animationLoop);
 
@@ -99,4 +94,19 @@ function getRendererElement() {
   return renderer.domElement;
 }
 
-export { getRendererElement };
+let resizeObserver;
+
+function setRendererParent(parent) {
+  parent.appendChild(renderer.domElement);
+  if (resizeObserver) {
+    resizeObserver.disconnect();
+  }
+  resizeObserver = new ResizeObserver(() => {
+    resizeRendererView();
+  });
+  resizeObserver.observe(parent);
+  window.addEventListener("resize", resizeRendererView);
+  resizeRendererView();
+}
+
+export { setRendererParent };

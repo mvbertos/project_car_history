@@ -1,7 +1,11 @@
 import { div } from "three/tsl";
 import "../css/meyerReset.css";
 import "../css/style.css";
-import { getRendererElement } from "./modelDisplay";
+import {
+  getRendererElement,
+  resizeRendererView,
+  setRendererParent,
+} from "./modelDisplay";
 
 class CarData {
   constructor(name = "", description = "", details = {}) {
@@ -81,11 +85,11 @@ const contentEl = document.getElementById("content");
 //Displaying Vehicle Model
 const vDisplayEl = document.createElement("div");
 vDisplayEl.id = "vDisplay";
-
-const vCanvasDisplayEl = getRendererElement();
-vDisplayEl.appendChild(vCanvasDisplayEl);
-
+// const vCanvasDisplayEl = getRendererElement();
+// vDisplayEl.appendChild(vCanvasDisplayEl);
+setRendererParent(vDisplayEl);
 contentEl.appendChild(vDisplayEl);
+// resizeRendererView();
 
 //Informations of the current vehicle
 const vInfoEl = document.createElement("div");
@@ -110,7 +114,7 @@ contentEl.appendChild(vInfoEl);
 
 //Credits
 const creditEl = document.createElement("div");
-creditEl.id ="credits"
+creditEl.id = "credits";
 
 //Model
 const modelAuthorDivEl = document.createElement("div");
