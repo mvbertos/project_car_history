@@ -106,10 +106,30 @@ vDataEl.append(
 );
 
 vInfoEl.append(vNameEl, vDescriptionEl, vDataEl);
-
-//Just simple visual division between elements
-// const divisionElement = document.createElement("div");
-// divisionElement.id = "division";
-// contentEl.appendChild(divisionElement);
-
 contentEl.appendChild(vInfoEl);
+
+//Credits
+const creditEl = document.createElement("div");
+creditEl.id ="credits"
+
+//Model
+const modelAuthorDivEl = document.createElement("div");
+const modelAuthorEl = document.createElement("p");
+modelAuthorEl.textContent = "Model By ";
+const modelAuthorLinkEl = document.createElement("a");
+modelAuthorLinkEl.textContent = "Lexyc16";
+modelAuthorLinkEl.href =
+  "https://sketchfab.com/3d-models/nissan-fairlady-300zx-z32-1989-8c04336a4ed84f6f836760db8256f9f0";
+modelAuthorDivEl.append(modelAuthorEl, modelAuthorLinkEl);
+
+//Page
+const pageAuthorDivEl = document.createElement("div");
+const pageAuthorEl = document.createElement("p");
+pageAuthorEl.textContent = "Page By ";
+const pageAuthorLinkEl = document.createElement("a");
+pageAuthorLinkEl.textContent = "Logout";
+pageAuthorLinkEl.href = "https://github.com/mvbertos";
+pageAuthorDivEl.append(pageAuthorEl, pageAuthorLinkEl);
+
+creditEl.append(modelAuthorDivEl, pageAuthorDivEl);
+vInfoEl.append(creditEl);

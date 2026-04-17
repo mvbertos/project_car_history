@@ -73,7 +73,7 @@ header {
 #content > div#vInfo {
   padding: var(--default-padding);
   display: grid;
-  grid-template-rows: repeat(3, min-content);
+  grid-template-rows: repeat(4, min-content);
   gap: var(--default-gap);
 }
 
@@ -89,6 +89,19 @@ div#tableItem {
   grid-template-columns: repeat(2, 40ch);
 }
 
-footer {
-  background-color: black;
+#credits {
+  justify-content: center;
+  display: grid;
+  gap: 10px;
+}
+#credits > div {
+  color: rgb(133, 133, 133);
+  display: flex;
+  gap: 1ch;
+}
+
+#credits a{
+  font-weight: bold;
+  color: rgb(133, 133, 133);
+  text-decoration: none;
 }
